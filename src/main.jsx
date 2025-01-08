@@ -8,13 +8,18 @@ import SignIn from './pages/SignIn'
 import Signup from './pages/Signup'
 import AdminLogin from './pages/AdminLogin.jsx'
 import Shop from './pages/Shop'
-
+import Profile from './pages/Profile.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Home/>,
   },
+  {
+    path: '/profile',
+    element: <Profile/>
+  }
+  ,
   {
     path: '/admin',
     element: <AdminDash/>

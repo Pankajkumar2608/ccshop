@@ -6,11 +6,11 @@ const Filter = () => {
 
     
     return (
-        <div className="p-6 max-w-4xl mx-auto bg-inherit rounded-xl shadow-lg font-nunito">
+        <div className="p-6 w-full mx-auto bg-gray-200 rounded-xl mt-2 shadow-lg font-nunito">
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6'>
                 
                 <div className='flex flex-col sm:flex-row items-start sm:items-center gap-3 hover:transform hover:scale-105 transition-all duration-300'>
-                    <label className='text-gray-700 font-semibold min-w-[90px]'>Bin:</label>
+                    <label className='text-black font-semibold min-w-[90px]'>Bin:</label>
                     <input 
                         type="text" 
                         placeholder="Enter bin number" 
@@ -19,7 +19,7 @@ const Filter = () => {
                 </div>
              
                 <div className='flex flex-col sm:flex-row items-start sm:items-center gap-3 hover:transform hover:scale-105 transition-all duration-300'>
-                    <label className='text-gray-700 font-semibold min-w-[90px]'>Country:</label>
+                    <label className='text-black font-semibold min-w-[90px]'>Country:</label>
                     <input 
                         type="text" 
                         placeholder="Type country name" 
@@ -28,7 +28,7 @@ const Filter = () => {
                 </div>
                 
                 <div className='flex flex-col sm:flex-row items-start sm:items-center gap-3 hover:transform hover:scale-105 transition-all duration-300'>
-                    <label className='text-gray-700 font-semibold min-w-[90px]'>Base:</label>
+                    <label className='text-black font-semibold min-w-[90px]'>Base:</label>
                     <select 
                         className='w-full p-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all'
                     >
@@ -39,7 +39,7 @@ const Filter = () => {
                 </div>
              
                 <div className='flex flex-col sm:flex-row items-start sm:items-center gap-3 hover:transform hover:scale-105 transition-all duration-300'>
-                    <label className='text-gray-700 font-semibold min-w-[90px]'>Zip:</label>
+                    <label className='text-black font-semibold min-w-[90px]'>Zip:</label>
                     <input 
                         type="text" 
                         placeholder="Enter zip code" 

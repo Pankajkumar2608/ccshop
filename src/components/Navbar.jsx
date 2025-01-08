@@ -25,7 +25,7 @@ const Navbar = () => {
   });
 
   return (
-    <div className="navbar bg-gradient-to-r from-gray-50 to-gray-100 shadow-lg border-b border-gray-200">
+    <div className="navbar bg-gradient-to-r from-gray-50 to-gray-100 shadow-lg border-b bg-gray-200">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden hover:bg-gray-200 transition-all duration-300">
@@ -77,9 +77,9 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <div className="text-lg font-semibold flex flex-row text-gray-700 bg-gradient-to-r from-yellow-50 to-gray-50 px-6 py-2 rounded-full shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300">
-        <span className="text-yellow-500">{userName}</span>
-        <span className="text-yellow-500">${balance}</span>
+        <div className="text-md  flex flex-col text-gray-700  px-6 py-2 rounded-3xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300" onClick={() => Navigate('/profile')}>
+        <span className="text-yellow-500">Pankaj</span>
+        <span className="text-yellow-500 justify-center flex flex-row">${balance}</span>
         </div>
       </div>
     </div>

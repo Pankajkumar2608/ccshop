@@ -5,7 +5,7 @@ import Filter from '../components/Filter'
 
 const Shop = () => {
   return (
-    <div className='font-nunito'>
+    <div className='font-nunito bg-gray-700'>
         <Navbar/>
         <Filter/>
         <Body/>
