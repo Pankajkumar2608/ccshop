@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model User {
+  id           Int        @id @default(autoincrement())
+  userName     String
+  email        String     @unique
+  password     String
+  walletBalance Int       @default(0)
+  role         String     @default("USER") // USER or ADMIN
+  createdAt    DateTime   @default(now())
+  ownedCards   UserCard[] // Relation to UserCard table
+}
+
+model Card {
+  id           Int        @id @default(autoincrement())
+  cardNumber   String     @unique
+  expiryMonth  String
+  expiryYear   String
+  cvv          String
+  fullName     String
+  addressLine  String
+  state        String
+  city         String
+  postalCode   String
+  phoneNumber  String
+  country      String
+  ssn          String
+  birthMonth   String
+  birthDay     String
+  birthYear    String
+  email        String     
+  createdAt    DateTime   @default(now())
+  isSold       Boolean    @default(false) // Indicates if the card is sold
+  price        Decimal    @default(1.0)
+  userCard     UserCard[] // Relation to UserCard
+}
+
+model UserCard {
+  id           Int        @id @default(autoincrement())
+  userId       Int        // Foreign key to User
+  cardId       Int        // Foreign key to Card
+  purchaseDate DateTime   @default(now())
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  card         Card       @relation(fields: [cardId], references: [id], onDelete: Cascade)
+}
