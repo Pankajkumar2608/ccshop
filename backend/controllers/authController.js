@@ -263,6 +263,7 @@ export const buyCard = async(req,res) => {
                 }
             });
             
+            
             return { success: true, data: userCard };
         });
 
@@ -277,7 +278,7 @@ export const buyCard = async(req,res) => {
 }
 export const filterOption = async(req,res) => {
     try{
-        const { cardNumber, zipCode, city } = req.body;
+        const { cardNumber, zipCode, city, base } = req.body;
         const cards = await prisma.card.findMany({
             where: {
                 cardNumber: {
@@ -291,6 +292,7 @@ export const filterOption = async(req,res) => {
                 },
             }
         })
+        res.status(200).json({ message: 'Cards fetched successfully', data: cards });
 
     }
     catch(error){

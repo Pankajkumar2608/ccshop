@@ -1,7 +1,21 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useContext} from 'react'
+import Body from './Body';
+
 
 
 const Filter = () => {
+    const handleFilter = async() => {
+        try {
+            const fetch = await axios.get('http://localhost:3000/api/filter', {withcredentials: true});
+            
+
+            
+
+        } catch (error) {
+            console.error('Error fetching cards:', error);
+        }
+    }
     
 
     

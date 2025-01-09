@@ -49,9 +49,10 @@ const Body = () => {
         <th className="bg-gray-200 px-6 py-4 text-left text-sm font-semibold text-gray-800 tracking-wider">#</th>
         <th className="bg-gray-200 px-6 py-4 text-left text-sm font-semibold text-gray-800 tracking-wider">Bin</th>
         <th className="bg-gray-200 px-6 py-4 text-left text-sm font-semibold text-gray-800 tracking-wider">City</th>
+        <th className="bg-gray-200 px-6 py-4 text-left text-sm font-semibold text-gray-800 tracking-wider">State</th>
         <th className="bg-gray-200 px-6 py-4 text-left text-sm font-semibold text-gray-800 tracking-wider">Country</th>
         <th className="bg-gray-200 px-6 py-4 text-left text-sm font-semibold text-gray-800 tracking-wider">ZipCode</th>
-        <th className="bg-gray-200 px-6 py-4 text-left text-sm font-semibold text-gray-800 tracking-wider">State</th>
+        
         <th className="bg-gray-200 px-6 py-4 text-left text-sm font-semibold text-gray-800 tracking-wider">Month</th>
         <th className="bg-gray-200 px-6 py-4 text-left text-sm font-semibold text-gray-800 tracking-wider">Year</th>
         <th className="bg-gray-200 px-6 py-4 text-left text-sm font-semibold text-gray-800 tracking-wider">Tel</th>

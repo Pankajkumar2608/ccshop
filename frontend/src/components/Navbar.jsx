@@ -25,7 +25,7 @@ const Navbar = () => {
   });
 
   return (
-    <div className="navbar bg-gradient-to-r from-gray-50 to-gray-100 shadow-lg border-b bg-gray-200">
+    <div className="navbar bg-gradient-to-r from-black via-gray-900 to-black animate-gradient bg-[length:200%_200%]">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden hover:bg-gray-200 transition-all duration-300">
@@ -59,25 +59,27 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-2xl font-bold text-gray-800 hover:text-yellow-500 transition-all duration-300">
+        <a className="btn btn-ghost text-2xl font-bold text-white hover:text-yellow-500 transition-all duration-300">
           <span className="text-yellow-500">loop</span>horia
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-6">
           <li>
-            <a className="text-lg font-medium text-gray-700 hover:text-yellow-500 transition-all duration-300 hover:scale-105" onClick={() => Navigate('/')}>Home</a>
+            <a className="text-lg font-medium text-white hover:text-yellow-500 transition-all duration-300 hover:scale-105" onClick={() => Navigate('/')}>Home</a>
           </li>
           <li>
-            <a className="text-lg font-medium text-gray-700 hover:text-yellow-500 transition-all duration-300 hover:scale-105" onClick={() => Navigate('/shop')}>Shop</a>
+            <a className="text-lg font-medium text-white hover:text-yellow-500 transition-all duration-300 hover:scale-105" onClick={() => Navigate('/shop')}>Shop</a>
           </li>
           <li>
-            <a className="text-lg font-medium text-gray-700 hover:text-yellow-500 transition-all duration-300 hover:scale-105" href="https://t.me/+q4-X5LdmAfM1Zjhl">Contact</a>
+            <a className="text-lg font-medium text-white hover:text-yellow-500 transition-all duration-300 hover:scale-105" href="https://t.me/+q4-X5LdmAfM1Zjhl">Contact</a>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <div className="text-md  flex flex-col text-gray-700  px-6 py-2 rounded-3xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300" onClick={() => Navigate('/profile')}>
+        <div className="text-md flex flex-col text-gray-700 px-6 py-2  border-gray-200   animate-fadeIn  hover:text-blue-300 hover:underline transition-all duration-300 bg-gray-900/80 p-8 rounded-3xl shadow-[0_0_15px_rgba(255,0,0,0.5)] 
+                          hover:shadow-[0_0_30px_rgba(255,0,0,0.8)] 
+                          transform hover:-translate-y-2 border border-yellow-500/30" onClick={() => Navigate('/profile')}>
         <span className="text-yellow-500">Pankaj</span>
         <span className="text-yellow-500 justify-center flex flex-row">${balance}</span>
         </div>
