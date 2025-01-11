@@ -1,27 +1,26 @@
-
 services:
   frontend:
-    build: 
-      context: ./frontend
-      dockerfile: Dockerfile
+    build: ./frontend
     ports:
       - "5173:5173"
+    volumes:
+      - ./frontend
+      - /app/node_modules
     depends_on:
       - backend
-    environment:
-      - VITE_API_URL=http://backend:3000/api
 
   backend:
-    build: 
-      context: ./backend
-      dockerfile: Dockerfile
+    build: ./backend
     ports:
       - "3000:3000"
+    volumes:
+      - ./backend
+      - /app/node_modules
     depends_on:
       - postgres
     environment:
-      - DATABASE_URL=postgres://avnadmin:AVNS_2WRsC63wUBTnk1tjq58@user-anypng-0329.d.aivencloud.com:28398/defaultdb?sslmode=require
-      - JWT_SECRET=DevelopedByPankajjaat
+      - DATABASE_URL=
+      - JWT_SECRET=
 
   postgres:
     image: postgres:latest
