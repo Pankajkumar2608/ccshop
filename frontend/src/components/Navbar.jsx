@@ -46,7 +46,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-white rounded-xl z-[1] mt-3 w-52 p-2 shadow-xl backdrop-blur-sm border border-gray-100"
+            className="menu menu-sm dropdown-content bg-black rounded-xl z-[1] mt-3 w-52 p-2 shadow-xl backdrop-blur-sm border border-gray-100"
           >
             <li>
               <a className="hover:text-yellow-500 hover:bg-gray-50 transition-all duration-300 py-3" onClick={() => Navigate('/')}>Home</a>
@@ -60,7 +60,7 @@ const Navbar = () => {
           </ul>
         </div>
         <a className="btn btn-ghost text-2xl font-bold text-white hover:text-yellow-500 transition-all duration-300">
-          <span className="text-yellow-500">loop</span>horia
+          <span className="text-yellow-500 animate-pulse">loop</span>horia
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -79,8 +79,8 @@ const Navbar = () => {
       <div className="navbar-end">
         <div className="text-md flex flex-col text-gray-700 px-6 py-2  border-gray-200   animate-fadeIn  hover:text-blue-300 hover:underline transition-all duration-300 bg-gray-900/80 p-8 rounded-3xl shadow-[0_0_15px_rgba(255,0,0,0.5)] 
                           hover:shadow-[0_0_30px_rgba(255,0,0,0.8)] 
-                          transform hover:-translate-y-2 border border-yellow-500/30" onClick={() => Navigate('/profile')}>
-        <span className="text-yellow-500">Pankaj</span>
+                          transform hover:-translate-y-2 border border-yellow-500/30 " onClick={() => Navigate('/profile')}>
+        <span className="text-yellow-500 hidden md:flex">{userName}</span>
         <span className="text-yellow-500 justify-center flex flex-row">${balance}</span>
         </div>
       </div>
