@@ -1,37 +1,30 @@
 services:
   frontend:
-    build: ./frontend
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: p26ankaj/randomproject-frontend:latest
     ports:
       - "5173:5173"
     volumes:
-      - ./frontend
+      - ./frontend:/app
       - /app/node_modules
     depends_on:
       - backend
 
   backend:
-    build: ./backend
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    image: p26ankaj/randomproject-backend:latest
+
+    
     ports:
       - "3000:3000"
     volumes:
-      - ./backend
+      - ./backend:/app
       - /app/node_modules
-    depends_on:
-      - postgres
     environment:
-      - DATABASE_URL=
-      - JWT_SECRET=
-
-  postgres:
-    image: postgres:latest
-    environment:
-      - POSTGRES_USER=username
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=dbname
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-volumes:
-  postgres_data:
+      - DATABASE_URL=postgres://avnadmin:AVNS_2WRsC63wUBTnk1tjq58@user-anypng-0329.d.aivencloud.com:28398/defaultdb?sslmode=require
+      - JWT_SECRET=DevelopedByPankajjaat
+      - NODE_ENV=production

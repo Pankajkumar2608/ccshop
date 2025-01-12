@@ -23,11 +23,14 @@ export const loginAuth = async (req, res, next) => {
         if (!req.userId) {
             return res.status(401).json({ message: 'Invalid token' });
         }
+        
         req.auth = {
             userId: req.userId,
         };
-
+        
         next();
+        
+        return res.status(200).json({ message: 'Authentication successful' });
     } catch (error) {
         console.error('Authentication error:', error.message);
         res.status(401).json({ message: 'Authentication failed' });

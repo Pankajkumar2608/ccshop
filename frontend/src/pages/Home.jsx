@@ -1,7 +1,26 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import { Navigate } from "react-router";
 
 const Home = () => {
+  const isAuth = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/api/isAuth", {
+        withCredentials: true,
+      });
+      if (response.status === 200) {
+        Navigate('/home');
+        
+      } else {
+        Navigate('/signin');
+        
+      }
+    } catch (error) {
+      Navigate('/signin');
+      
+    }
+}
+isAuth();
   return (
     
     <div className="min-h-screen bg-black text-gray-100 font-nunito">

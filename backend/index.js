@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:5173', // React Vite default port
+    origin: ['http://localhost:5173', 'http://www.pankaj.bio'], 
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']

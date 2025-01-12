@@ -9,10 +9,18 @@ import Signup from './pages/Signup'
 import AdminLogin from './pages/AdminLogin.jsx'
 import Shop from './pages/Shop'
 import Profile from './pages/Profile.jsx'
+import LoadingPage from './pages/LoadingPage.jsx'
+
+
 
 const router = createBrowserRouter([
   {
     path: '/',
+    element: <LoadingPage/>
+  },
+  
+  {
+    path: '/home',
     element: <Home/>,
   },
   {

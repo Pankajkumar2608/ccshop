@@ -55,7 +55,7 @@ const SignIn = () => {
             );
 
             if (response.data?.success) {
-                navigate('/shop');
+                navigate('/home');
             } else {
                 throw new Error('Authentication failed');
             }

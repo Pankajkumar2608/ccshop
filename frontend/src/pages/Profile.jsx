@@ -4,6 +4,24 @@ import React from "react";
 import Body from "../components/Body";
 
 const Profile = () => {
+    const isAuth = async () => {
+        try {
+          const response = await axios.get("http://localhost:3000/api/isAuth", {
+            withCredentials: true,
+          });
+          if (response.status === 200) {
+            return;
+            
+          } else {
+            Navigate('/signin');
+            
+          }
+        } catch (error) {
+          Navigate('/signin');
+          
+        }
+    }
+    isAuth();
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [wallet, setWallet] = useState("");
