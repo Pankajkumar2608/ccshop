@@ -1,26 +1,36 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import { Navigate } from "react-router";
+import { useNavigate } from "react-router";
+import axios from "axios";
 
 const Home = () => {
-  const isAuth = async () => {
-    try {
-      const response = await axios.get("http://localhost:3000/api/isAuth", {
-        withCredentials: true,
-      });
-      if (response.status === 200) {
-        Navigate('/home');
-        
-      } else {
-        Navigate('/signin');
-        
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const isAuth = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/api/profile", {
+          withCredentials: true,
+        });
+        if (response.status === 200) {
+          return;
+        }
+      } catch (error) {
+        navigate('/signin');
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      Navigate('/signin');
-      
-    }
-}
-isAuth();
+    };
+    isAuth();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+
+ 
   return (
     
     <div className="min-h-screen bg-black text-gray-100 font-nunito">

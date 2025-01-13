@@ -1,27 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Body from '../components/Body'
 import Filter from '../components/Filter'
+import { useNavigate } from 'react-router'
 
 const Shop = () => {
-  const isAuth = async () => {
-    try {
-      const response = await axios.get("http://localhost:3000/api/isAuth", {
-        withCredentials: true,
-      });
-
-      if (response.status === 200) {
-        Navigate('/shop');
-      } else {
-        Navigate('/signin');
-        
+  const navigate = useNavigate();
+  
+    const isAuth = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/api/profile", {
+          withCredentials: true,
+        });
+        if (response.status === 200) {
+          return;
+        }
+      } catch (error) {
+        navigate('/signin');
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      Navigate('/signin');
-      
-    }
-}
-isAuth();
+    };
+    isAuth();
+ 
   return (
     <div className='font-nunito bg-gray-700'>
         <Navbar/>

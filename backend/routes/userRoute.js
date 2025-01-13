@@ -17,5 +17,5 @@ router.get('/user/cards', loginAuth ,getUserCards);
 router.get('/fetchBalance', loginAuth ,fetchBalance);
 router.post('/buycard', loginAuth , buyCard);
 router.post('/filter', loginAuth, filterOption);
-router.post('/isAuth', loginAuth);
+
 export default router;

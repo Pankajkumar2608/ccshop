@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+axios.defaults.withCredentials = true;
 
 const SignIn = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -56,6 +57,10 @@ const SignIn = () => {
 
             if (response.data?.success) {
                 navigate('/home');
+           
+             
+
+            
             } else {
                 throw new Error('Authentication failed');
             }

@@ -50,7 +50,7 @@ export const login = async (req, res) => {
         
         res.cookie('token', token, {
                     httpOnly: true,
-                    secure: process.env.NODE_ENV || 'production', 
+                    secure:  false, // set it true when we deploy it on production
                     sameSite: 'none',
                     maxAge: 7 * 24 * 60 * 60 * 1000, 
                     credentials: true
@@ -58,7 +58,7 @@ export const login = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            userName: user.userName
+            userName: user.userId
         });
 
     } catch (error) {
@@ -71,9 +71,9 @@ export const login = async (req, res) => {
 }
 export const userProfile = async(req,res) => {
     try {
-        const { userId } = req.body;
+        const { userId } = req.auth;
         const user = await prisma.user.findUnique({where: {id:userId}})
-        return res.json({
+        return res.status(200).json({
             userName: user.userName,
             walletBalance: user.walletBalance,
             email: user.email 
@@ -198,10 +198,12 @@ export const updateBalance = async(req,res) => {
     }
 }
 export const fetchBalance = async(req,res) => {
-    const userId = req.auth.userId;
+    const { userId } = req.auth;
+    console.log(userId)
     try {
-        const fetchBalance = await prisma.user.findUnique({where: {userId}});
-        return res.status(200).json({walletBalance: fetchBalance.walletBalance, userName});
+        const fetchBalance = await prisma.user.findUnique({where: {id:userId}});
+        console.log(fetchBalance)
+        return res.status(200).json({walletBalance: fetchBalance.walletBalance, userName: fetchBalance.userName});
     } catch (error) {
         return res.status(500).json({message:"something went wrong"});
     }

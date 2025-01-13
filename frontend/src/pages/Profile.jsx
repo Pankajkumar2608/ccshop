@@ -1,27 +1,29 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import React from "react";
-import Body from "../components/Body";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+    const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
     const isAuth = async () => {
-        try {
-          const response = await axios.get("http://localhost:3000/api/isAuth", {
-            withCredentials: true,
-          });
-          if (response.status === 200) {
-            return;
-            
-          } else {
-            Navigate('/signin');
-            
-          }
-        } catch (error) {
-          Navigate('/signin');
-          
+      try {
+        const response = await axios.get("http://localhost:3000/api/profile", {
+          withCredentials: true,
+        });
+        if (response.status === 200) {
+          return;
         }
-    }
+      } catch (error) {
+        navigate('/signin');
+      } finally {
+        setLoading(false);
+      }
+    };
     isAuth();
+  }, [navigate]);
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [wallet, setWallet] = useState("");

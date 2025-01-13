@@ -3,17 +3,18 @@ import jwt from 'jsonwebtoken';
 
 export const loginAuth = async (req, res, next) => {
     try {
-        const authHeader = req.headers.authorization;
-        if (!authHeader) {
+        const authHeader = req.headers["cookie"];
+        const token = authHeader.split("=")[1];
+        
+        if (!token) {
             return res.status(401).json({ message: 'No authentication token provided' });
         }
-
-        const token = authHeader.split('=')[0];
         
         let decodedData;
+        
 
         if (token) {
-            decodedData = jwt.verify(token, process.env.JWT_SECRET);
+            decodedData = jwt.verify(token, 'developedByPankajJaat');
             req.userId = decodedData?.id;
         } else {
             decodedData = jwt.decode(token);
@@ -30,10 +31,10 @@ export const loginAuth = async (req, res, next) => {
         
         next();
         
-        return res.status(200).json({ message: 'Authentication successful' });
+        
     } catch (error) {
         console.error('Authentication error:', error.message);
-        res.status(401).json({ message: 'Authentication failed' });
+        res.status(401).json({ message: error.message });
     }
 };
 
