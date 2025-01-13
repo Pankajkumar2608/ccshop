@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Body = ({ filteredData, isFiltered }) => {
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     if (isFiltered) {
@@ -28,6 +31,20 @@ const Body = ({ filteredData, isFiltered }) => {
       fetchCards();
     }
   }, [filteredData, isFiltered]);
+
+  const handleBuyNow = async (cardId) => {
+    
+    
+    
+    try {
+      await axios.post("http://localhost:3000/api/buycard", { cardId }, { withCredentials: true });
+      navigate("/profile");
+  
+    } catch (error) {
+      setError("Error buying card");
+      console.error("Error buying card:", error);
+    }
+  }
 
   if (loading) return (
     <div className="flex items-center justify-center min-h-screen">
@@ -77,7 +94,7 @@ const Body = ({ filteredData, isFiltered }) => {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{card.emailAvailable}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-900">${card.price}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors duration-200 shadow-sm" onClick={() => handleBuyNow(card)}>
+                    <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors duration-200 shadow-sm" onClick={() => handleBuyNow(card.id)}>
                       Buy Now
                     </button>
                   </td>

@@ -199,7 +199,7 @@ export const updateBalance = async(req,res) => {
 }
 export const fetchBalance = async(req,res) => {
     const { userId } = req.auth;
-    console.log(userId)
+
     try {
         const fetchBalance = await prisma.user.findUnique({where: {id:userId}});
         console.log(fetchBalance)
@@ -210,12 +210,12 @@ export const fetchBalance = async(req,res) => {
 }
 
 export const getUserCards = async(req, res) => {
-    const userId = req.auth.userId;
+    const { userId } = req.auth;
     try {
         const id = userId;
         
         const ownedCards = await prisma.userCard.findMany({
-            where: { id},
+            where: { id: userId},
             include: {
               card: true, 
             },
@@ -229,12 +229,14 @@ export const getUserCards = async(req, res) => {
     }
 }
 export const buyCard = async(req,res) => {
-    const { card  } = req.body;
-    const userId = req.auth.userId;
+    const { cardId  } = req.body;
+    const { userId } = req.auth;
+    
     try {
         const result = await prisma.$transaction(async (prisma) => {
             const findUser = await prisma.user.findUnique({where: {id: userId}});
-            const findCard = await prisma.card.findUnique({where: {id: card.id}});
+            
+            const findCard = await prisma.card.findUnique({where: {id: cardId}});
             
             if(findCard.isSold === true){
                 return { error: 'Card is already sold' };
@@ -252,7 +254,7 @@ export const buyCard = async(req,res) => {
             });
             
             await prisma.card.update({
-                where: {id: card.id},
+                where: {id: cardId},
                 data: {
                     isSold: true
                 }
@@ -261,7 +263,7 @@ export const buyCard = async(req,res) => {
             const userCard = await prisma.userCard.create({
                 data: {
                     userId: userId,
-                    cardId: card.id
+                    cardId: cardId
                 }
             });
             
